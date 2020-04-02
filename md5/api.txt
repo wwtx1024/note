@@ -1,0 +1,7 @@
+import {hexMD5}from"./md5.js"
+	if(data.openId){
+		let timestamp = new Date().getTime()
+      		let openId= (data.openId.substr(24) + timestamp);
+      		data.openId = hexMD5(sign);
+      		data.timestamp = timestamp;
+	}

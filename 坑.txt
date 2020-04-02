@@ -1,0 +1,16 @@
+方法：转换时间可以用moment.js
+
+
+
+
+
+坑的集合：
+
+	vue-style的scoped必须是第一个属性，加到lang后会使css失效、
+
+	在url地址中传参数时：会默认吧参数中的问号后面的数据截取点应该转码在解码
+			转码encodeURIComponent
+			解码decodeURIComponent
+	上拉加载之后做刷新时要将上拉的页数归零；
+	小程序不能强制用户授权，必须有引导流程，不然审核不过；
+

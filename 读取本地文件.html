@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>文件上传</title>
+    <style>
+        #fileOutput {
+            border:1px grey solid;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="fileInput" onChange="processFiles(this.files)">
+    <div id="fileOutput"></div>
+<script>
+    function processFiles(files) {
+    //每个文件对象都有三个有用的属性：name属性保存文件名，size属性保存文件的字节大小，type保存文件的MEMI类型
+    console.log(files);
+        var file = files[0];
+        //创建FileReader对象，
+        var reader = new FileReader();
+        //FileReader用来提取文件内容，但是这个方法是异步的，要提取文件，首先要处理onLoad事件
+        reader.onload = function(e) {
+            //这个事件发生了，意味着数据准备好了，
+            //把它复制到页面的div元素中
+            var output = document.getElementById("fileOutput");
+            //将文件内容转换成一个长字符串，保存在onload事件的e.target.result中
+            output.textContent = e.target.result;
+        };
+        //调用FileReader的readAsText()方法
+        reader.readAsText(file);
+    }
+</script>
+</body>
+</html>
