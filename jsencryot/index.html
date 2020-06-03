@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jsencrypt.js"></script>
+    <script>
+        //定义公钥
+        var PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGOjUXZmM5AxXeB6mKk4agkP4KTSfrJYvCOUoLwAxg9bPL3yHO2IAUacJ7a9nfZaImVtzmfTfKHPivGuxXnbQk+PzrydvXG7F6ReqOibSkCptGP9ic96Iq9WsgfIyQ9JXJUoa4GMRaobkZuqTVNh7Fe1xue1wDgluJ3QpnT5aAPwIDAQAB"
+        // 定义私钥
+        var PRIVATE_KEY ="MIICXAIBAAKBgQCGOjUXZmM5AxXeB6mKk4agkP4KTSfrJYvCOUoLwAxg9bPL3yHO2IAUacJ7a9nfZaImVtzmfTfKHPivGuxXnbQk+PzrydvXG7F6ReqOibSkCptGP9ic96Iq9WsgfIyQ9JXJUoa4GMRaobkZuqTVNh7Fe1xue1wDgluJ3QpnT5aAPwIDAQABAoGAckdabkrAzYhf9MIHSbFinI/1ieW4x84WmEzYSvq+T0rBQiD+ErJnEXodl6DyRO2tyQCJYD9Z4V0bKVI9yDa/aMNYQkDey2zB3cw5AIexexer2ZXwNGoYtAMeSpxQvC6Ng6THa26wYjtgkcNbdKT4oy99EQGAZeoDWq2FqBOf7hECQQC8UdutBntVeEhfcpWa2KJmShnkULTnielPEAfNNmsYYsf2PLv6VSV9ra+KMKExaywiLkHMz0stQoEKAbf/6/w3AkEAtnekTUKbp+r+VH7vAYFWkO/4LbJ2tqU4MdTcNiQtUtfhhcmn5AnVskxeCSyuDw42Zad2VNQMeJEdVpAabpNoOQJBAITY2jc9E1Q//g4XLyKFIEs4ivtdU8DisQttK5PAh9w0EwvJ3HHEDyaRl/vMQmoySHf0Wca5lTbga1c7zyliuBECQHsn4aOsE3eQ6ryJODRh4dXNwkrFq863UWiA7Wk1ncnOoA82/rSx1qSTWt0CZTEQPLL8BqhWv1wZRh4JAW4k3DECQHb//M8bHjD6WlJ4jMlGywcWfOYluktDp8j51EUn+g8z++d2cew1CkwL+p6eYqmosbkkPzJH71218SEkqAVR1OU="
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(PUBLIC_KEY);
+        var str = {
+            "uid": "1223334",
+            "pwd": "asd"
+        }
+        var encrypted = encrypt.encrypt(JSON.stringify(str));
+        console.log('加密前数据:%o', str);
+        console.log('加密后数据:%o', encrypted);
+        // var decrypt = new JSEncrypt();
+        encrypt.setPrivateKey(PRIVATE_KEY );
+        var uncrypted = encrypt.decrypt(encrypted);
+        console.log('解密后数据:%o', uncrypted);
+        console.log('解密后数据:%o', JSON.parse(uncrypted))
+       
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

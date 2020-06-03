@@ -84,9 +84,12 @@ function fnDown(verX, verY) {
             var stopL = verify.offset().left - 28
             // 误差在2px以内则算做成功
             if (Math.abs(stopL - verX) > 2) {
-                alert('验证失败')
+                alert('验证失败');
+                console.log(false);
             } else {
-                alert('验证成功')
+                alert('验证成功');
+                console.log(true);
+
             }
             // 解除绑定，并将滑动模块归位
             box.unbind('mousemove')
